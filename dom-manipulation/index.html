@@ -1,23 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Dynamic Quote Generator</title>
 </head>
 <body>
   <h1>Dynamic Quote Generator</h1>
-  
+
   <!-- Quote Display Area -->
   <div id="quoteDisplay"></div>
-  
+
   <!-- Show New Quote Button -->
   <button id="newQuote">Show New Quote</button>
-  
-  <!-- Form will be created here dynamically -->
-  <div id="formContainer"></div>
 
-  <!-- JavaScript -->
+  <!-- Form will be created dynamically -->
+  <div id="formContainer" style="margin-top: 1rem;"></div>
+
+  <!-- Storage / JSON Controls -->
+  <div id="storageControls" style="margin-top: 1rem;">
+    <button id="exportJson">Export Quotes (JSON)</button>
+    <!-- Using inline onchange per spec/example -->
+    <input type="file" id="importFile" accept=".json" onchange="importFromJsonFile(event)" />
+    <button id="showLast">Show Last Viewed Quote (session)</button>
+  </div>
+
   <script src="script.js"></script>
 </body>
 </html>
