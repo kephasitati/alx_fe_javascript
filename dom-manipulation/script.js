@@ -5,13 +5,11 @@ let quotes = [
   { text: "It’s not whether you get knocked down, it’s whether you get up.", category: "Perseverance" }
 ];
 
-
-// Functions to show a random quote
+// Function to show a random quote
 function showRandomQuote() {
   let randomIndex = Math.floor(Math.random() * quotes.length);
   let quote = quotes[randomIndex];
-  
-  // Clear and update the quote display
+
   const quoteDisplay = document.getElementById("quoteDisplay");
   quoteDisplay.innerHTML = `<p>"${quote.text}"</p><small>— ${quote.category}</small>`;
 }
@@ -22,10 +20,8 @@ function addQuote() {
   let newCategory = document.getElementById("newQuoteCategory").value.trim();
 
   if (newText && newCategory) {
-    // Add new quote to array
     quotes.push({ text: newText, category: newCategory });
 
-    // Clear input fields
     document.getElementById("newQuoteText").value = "";
     document.getElementById("newQuoteCategory").value = "";
 
@@ -35,12 +31,35 @@ function addQuote() {
   }
 }
 
-// Attach event listeners
+// ✅ Function to dynamically create the Add Quote Form
+function createAddQuoteForm() {
+  const formContainer = document.getElementById("formContainer");
+
+  const textInput = document.createElement("input");
+  textInput.id = "newQuoteText";
+  textInput.type = "text";
+  textInput.placeholder = "Enter a new quote";
+
+  const categoryInput = document.createElement("input");
+  categoryInput.id = "newQuoteCategory";
+  categoryInput.type = "text";
+  categoryInput.placeholder = "Enter quote category";
+
+  const addBtn = document.createElement("button");
+  addBtn.id = "addQuoteBtn";
+  addBtn.textContent = "Add Quote";
+
+  formContainer.appendChild(textInput);
+  formContainer.appendChild(categoryInput);
+  formContainer.appendChild(addBtn);
+
+  // Attach event listener here
+  addBtn.addEventListener("click", addQuote);
+}
+
+// Attach event listener for new quotes
 document.getElementById("newQuote").addEventListener("click", showRandomQuote);
-document.getElementById("addQuoteBtn").addEventListener("click", addQuote);
 
-// Show an initial quote on load
+// Run on page load
+createAddQuoteForm();
 showRandomQuote();
-
-
-
