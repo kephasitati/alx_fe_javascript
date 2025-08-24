@@ -1,30 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Dynamic Quote Generator</title>
 </head>
 <body>
   <h1>Dynamic Quote Generator</h1>
+  
+  <!-- Category Filter -->
+  <label for="categoryFilter">Filter by Category:</label>
+  <select id="categoryFilter">
+    <option value="all">All</option>
+  </select>
 
-  <!-- Quote Display Area -->
+  <!-- Quote Display Area. -->
   <div id="quoteDisplay"></div>
-
+  
   <!-- Show New Quote Button -->
   <button id="newQuote">Show New Quote</button>
-
-  <!-- Form will be created dynamically -->
-  <div id="formContainer" style="margin-top: 1rem;"></div>
-
-  <!-- Storage / JSON Controls -->
-  <div id="storageControls" style="margin-top: 1rem;">
-    <button id="exportJson">Export Quotes (JSON)</button>
-    <!-- Using inline onchange per spec/example -->
-    <input type="file" id="importFile" accept=".json" onchange="importFromJsonFile(event)" />
-    <button id="showLast">Show Last Viewed Quote (session)</button>
+  
+  <!-- Add New Quote Form -->
+  <div>
+    <input id="newQuoteText" type="text" placeholder="Enter a new quote" />
+    <input id="newQuoteCategory" type="text" placeholder="Enter quote category" />
+    <button id="addQuoteBtn">Add Quote</button>
   </div>
 
+  <!-- Import / Export JSON -->
+  <div>
+    <button id="exportJsonBtn">Export Quotes (JSON)</button>
+    <input type="file" id="importFile" accept=".json" onchange="importFromJsonFile(event)" />
+  </div>
+
+  <!-- JavaScripts -->
   <script src="script.js"></script>
 </body>
 </html>
